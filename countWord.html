@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Count the words</title>
+</head>
+<body>
+	<div>
+		<p id="paragraph">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque varius, leo sed accumsan scelerisque, nisl ipsum tristique justo, a commodo purus felis nec nulla. Nullam gravida lacus id ultricies egestas. Nam eget congue magna. Vivamus aliquet accumsan mollis. Quisque facilisis lacus ut placerat efficitur. Nullam vel tristique leo, ac eleifend mi. Nullam lacus sem, blandit eu tortor sed, malesuada fermentum massa. Integer sem ligula, molestie non elit ac, pulvinar commodo sem. Nullam eleifend sodales maximus. Fusce non finibus arcu. Lorem.
+		</p>
+	</div>
+	<script>
+		function count(word) {
+			let ArrObj = [];
+			const trimWord = word.replace(/[, . ! ? 	: ;]+/g, " ")
+			const wordArray = trimWord.split(' ').map(elem => elem.toLowerCase());
+			const BigWords = wordArray.filter(elem => elem.length > 2);
+			//create entry or update
+			BigWords.forEach((elem) => {
+				if(ArrObj.length < 1) {
+					ArrObj.push({name: elem, count: 1});
+				} else {
+					const findClone = ArrObj.findIndex((elemArray) => elem === elemArray.name);
+					if(findClone > -1) {
+						ArrObj[findClone].count += 1;
+					} else {
+						ArrObj.push({name: elem, count: 1});
+					}
+				}
+			});
+			console.table(ArrObj);
+		}
+
+		const p = document.getElementById('paragraph').textContent;
+
+		count(p);
+	</script>
+</body>
+</html>
+
