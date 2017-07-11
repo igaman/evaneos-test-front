@@ -16,7 +16,7 @@
 		document.addEventListener('DOMContentLoaded', function() {
 			function count(word) {
 				let ArrObj = [];
-				const trimWord = word.replace(/[, . ! ? 	: ;]+/g, " ")
+				const trimWord = word.replace(/[, . ! ? 	 : ;]+/g, " ")
 				const wordArray = trimWord.split(' ').map(elem => elem.toLowerCase());
 				const BigWords = wordArray.filter(elem => elem.length > 2);
 				//create entry or update
